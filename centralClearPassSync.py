@@ -301,23 +301,10 @@ def create_ap_endpoint(central,ap_info):
             print("\n Site / Group information missing for AP: "+ ap.get('name') + " with IP: " + ap.get('ip_address'))
 
 
-#Configuring ClearPass OAuth client credentials
-#SAMPLE clientid = "CPPM-TMELab-Cloud"
-#SAMPLE clientsecret = "D4fg32jBIhdfh454932/1MKOwNEly3wZTok6Lq2ET"
 
 clientid = credsConfig.clientid
 clientsecret = credsConfig.clientsecret
-login = ClearPassAPILogin(server="https://cxcii.arubasecurity.net:443/api", granttype="client_credentials",clientsecret=clientsecret, clientid=clientid)
-
-#Configring central OAuth details
-# SAMPLE central_info = {
-#            "username": "dummy@aruba.com",
-#            "password": "xxxxxxx",
-#            "client_id": "BEw9Th7dummyJHDbhwe9dDO65",
-#            "client_secret": "ap4KPshdummy1i1a5ynf6LZ",
-#            "customer_id": "326a992fdummy25a662fd41b37222",
-#            "base_url": "https://internal-apigw.central.arubanetworks.com/swagger/apps/nms/"
-#        }
+login = ClearPassAPILogin(server="https://clearpass.mydomain.com:443/api", granttype="client_credentials",clientsecret=clientsecret, clientid=clientid)
 ssl_verify = False
 central = ArubaCentralBase(central_info=credsConfig.central_info,
                            ssl_verify=ssl_verify)
